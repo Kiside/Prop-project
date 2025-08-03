@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd6iail5spa1p"]
+
+[ext_resource type="PackedScene" uid="uid://dxkr46cg1jxl7" path="res://assets/Scenes/Characters/Playable/robo.tscn" id="1_wlxtt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wlxtt"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3bdc"]
+size = Vector3(60, 2, 60)
+
+[node name="Test" type="Node3D"]
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.964035, 0.265775, 0, -0.265775, 0.964035, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.80115e-08, 0.947277, 0.320415, 8.28136e-08, 0.320415, -0.947277, 0, 3.06327, -7.73942)
+
+[node name="robo" parent="." instance=ExtResource("1_wlxtt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.594051, 0.804428, 0, -0.804428, 0.594051, 0, 4.57427, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.01478, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_wlxtt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_o3bdc")
+skeleton = NodePath("../CollisionShape3D")

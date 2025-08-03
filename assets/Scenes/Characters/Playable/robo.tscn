@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxkr46cg1jxl7"]
+
+[ext_resource type="Material" uid="uid://d31jitwuw5bmg" path="res://assets/Materials/mat-robo.tres" id="1_762tr"]
+[ext_resource type="Script" uid="uid://d3vh1vdb17t5a" path="res://assets/Scripts/Characters/Playable/Robo.cs" id="1_qodtc"]
+[ext_resource type="Material" uid="uid://v7agq2le2fg5" path="res://assets/Materials/mat-robo-two.tres" id="2_qodtc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yeo7a"]
+
+[node name="robo" type="CharacterBody3D"]
+script = ExtResource("1_qodtc")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="View" type="Node3D" parent="Pivot"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.525693, 0)
+
+[node name="Mesh" type="CSGBox3D" parent="Pivot/View"]
+material = ExtResource("1_762tr")
+
+[node name="Mesh2" type="CSGBox3D" parent="Pivot/View"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25925, 0.61557)
+size = Vector3(1, 0.175781, 0.252991)
+material = ExtResource("2_qodtc")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525693, 0)
+shape = SubResource("BoxShape3D_yeo7a")
